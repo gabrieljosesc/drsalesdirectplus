@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f2fb;
+  --foreground: #241f3d;
+  --coral: #f2766f;
+  --rose: #ec6a82;
+  --violet: #8c85d8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-coral: var(--coral);
+  --color-rose: var(--rose);
+  --color-violet: var(--violet);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Headline gradient used across the designs (coral -> violet) */
+.text-brand-gradient {
+  background: linear-gradient(90deg, var(--coral) 0%, var(--rose) 35%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-brand-gradient {
+  background: linear-gradient(90deg, var(--coral) 0%, var(--violet) 110%);
+}
+
+/* Soft molecular-style background blobs behind every page */
+.page-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42rem 42rem at 85% 12%, rgba(242, 118, 111, 0.16), transparent 60%),
+    radial-gradient(38rem 38rem at 8% 85%, rgba(140, 133, 216, 0.18), transparent 60%),
+    radial-gradient(30rem 30rem at 75% 80%, rgba(236, 106, 130, 0.10), transparent 60%),
+    linear-gradient(180deg, #f7f6fd 0%, #f3f2fb 45%, #efedfa 100%);
+}
+
+/* Frosted-glass surfaces (nav pill, cards, form panel) */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 40px -18px rgba(52, 43, 110, 0.25);
 }
