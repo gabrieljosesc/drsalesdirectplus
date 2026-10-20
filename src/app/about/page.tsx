@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BadgeCheck, FlaskConical, Truck, ChevronRight } from "lucide-react";
+import { BadgeCheck, FlaskConical, Truck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
@@ -57,17 +56,6 @@ export default function AboutPage() {
         ))}
       </div>
 
-      <div className="mt-10 text-center">
-        <Link
-          href="/peptides"
-          className="btn-brand-gradient inline-flex items-center gap-3 rounded-full px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-violet/30 transition-transform hover:scale-[1.02]"
-        >
-          Explore Peptides
-          <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/60">
-            <ChevronRight className="h-4 w-4" />
-          </span>
-        </Link>
-      </div>
     </section>
   );
 }

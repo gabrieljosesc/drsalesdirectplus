@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Search, BarChart3, FileText } from "lucide-react";
+import { Search, BarChart3, FileText, Download } from "lucide-react";
+import coas from "@/data/coas.json";
 
 export const metadata: Metadata = {
   title: "Purity & Reliability",
@@ -103,6 +104,47 @@ export default function PurityPage() {
           Purity isn&apos;t just a claim.
           <br />
           <span className="text-brand-gradient">It&apos;s measured.</span>
+        </p>
+      </div>
+
+      {/* Certificates of Analysis library */}
+      <div className="py-14">
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            CERTIFICATES OF <span className="text-brand-gradient">ANALYSIS.</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-foreground/65">
+            Third-party lab reports for our peptide batches — open any
+            certificate to view or download the full PDF.
+          </p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {coas.map((group) => (
+            <div key={group.product} className="glass rounded-3xl p-5">
+              <h3 className="text-sm font-bold text-foreground">{group.product}</h3>
+              <ul className="mt-3 space-y-1.5">
+                {group.files.map((f) => (
+                  <li key={f.url}>
+                    <a
+                      href={f.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-start gap-2 text-xs text-foreground/65 transition-colors hover:text-rose"
+                    >
+                      <Download className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-violet group-hover:text-rose" />
+                      <span className="underline-offset-2 group-hover:underline">{f.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-6 text-center text-xs text-foreground/50">
+          Certificates are provided per batch; the certificate for your batch is also
+          linked on each product page. For research use only.
         </p>
       </div>
     </section>

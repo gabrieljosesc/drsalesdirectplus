@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// "Peptides" is deliberately not in the nav: the homepage's Explore Peptides
+// button is the single entry point to the collection (client feedback).
 const LINKS = [
-  { label: "Peptides", href: "/peptides" },
   { label: "About", href: "/about" },
   { label: "Purity & Reliability", href: "/purity" },
   { label: "Contact", href: "/contact" },
