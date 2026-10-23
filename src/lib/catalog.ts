@@ -22,8 +22,14 @@ export function storeUrl(slug: string): string {
 }
 
 export async function fetchPeptides(): Promise<CatalogPeptide[]> {
-  const url = process.env.CATALOG_SUPABASE_URL;
-  const key = process.env.CATALOG_SUPABASE_SERVICE_KEY;
+  // The catalog lives in the same Supabase project as the store, so the main
+  // credentials are the source of truth; the CATALOG_* pair is a fallback
+  // from before the sites shared a database.
+  const url =
+    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.CATALOG_SUPABASE_URL;
+  const key =
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.CATALOG_SUPABASE_SERVICE_KEY;
   if (!url || !key) return [];
 
   const db = createClient(url, key, { auth: { persistSession: false } });
