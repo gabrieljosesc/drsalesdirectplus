@@ -52,7 +52,7 @@ export default async function PeptidesPage() {
                     alt={p.title}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-contain p-3 transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex h-full items-center justify-center">
@@ -77,7 +77,7 @@ export default async function PeptidesPage() {
       )}
 
       <p className="mt-8 text-center text-xs text-foreground/50">
-        Ordering is handled securely on drsalesdirect.com. For research use only.
+        Tiered wholesale pricing on every product page. For research use only.
       </p>
     </section>
   );
