@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/hooks/useCart";
+import { WishlistProvider } from "@/hooks/useWishlist";
+import { Toaster } from "@/components/ui/sonner";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -24,10 +27,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <div className="page-glow" aria-hidden />
-        <SiteNav />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <CartProvider>
+          <WishlistProvider>
+            <div className="page-glow" aria-hidden />
+            <SiteNav />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+            <Toaster position="top-right" richColors />
+          </WishlistProvider>
+        </CartProvider>
       </body>
     </html>
   );

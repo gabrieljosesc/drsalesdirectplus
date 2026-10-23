@@ -13,11 +13,12 @@ export type CatalogPeptide = {
   image: string | null;
 };
 
-const STORE = "https://www.drsalesdirect.com";
-
-/** Where a card click lands: the main store's product page, campaign-tagged. */
+/**
+ * Product pages live ON THIS SITE (client requirement: ad traffic must never
+ * be redirected to the main Dr Sales Direct website).
+ */
 export function storeUrl(slug: string): string {
-  return `${STORE}/product/${slug}?utm_source=drsalesdirectplus&utm_medium=referral&utm_campaign=peptides_landing`;
+  return `/peptides/${slug}`;
 }
 
 export async function fetchPeptides(): Promise<CatalogPeptide[]> {
